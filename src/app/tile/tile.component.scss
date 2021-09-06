@@ -1,0 +1,18 @@
+.tileCat{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-basis: 25%;
+  margin-right: 30px;
+  margin-bottom: 30px;
+
+}
+.infoCat{
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  align-items: center;
+  background-color: rgb(95, 91, 91);
+  color: white;
+  padding: 0 15px;
+}

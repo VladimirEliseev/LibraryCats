@@ -1,0 +1,17 @@
+body{
+  margin: 0;
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+  min-height: 100vh;
+}
+main{
+  min-height: calc(100vh - 175px);
+}
+footer{
+  background-color: rgb(92, 88, 88);
+  color: white;
+  font-size: 18px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

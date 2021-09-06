@@ -1,0 +1,32 @@
+.tableCat{
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(148, 144, 144);
+  height: 150px;
+  margin-bottom: 30px;
+
+}
+.iconLike{
+  height: 40px;
+}
+.infoCat{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  flex-basis: 85%;
+  color: white;
+  padding-top: 10px;
+}
+.infoCat>div:nth-child(1){
+  text-transform: uppercase;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.infoCat>div:nth-child(2){
+  font-size: 18px;
+}
+.iconLike{
+  align-self: center;
+  margin-right: 20px;
+  fill: white;
+}

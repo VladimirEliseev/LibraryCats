@@ -1,0 +1,39 @@
+<div class='app'>
+  <header>
+    <div class='headerBorder'></div>
+    <div class='headerTitle'>Библиотека котиков</div>
+  </header>
+  <main>
+
+    <div class='blockChoice'>
+      <button class='itemTile' (click)="changeCurrentChoice($event)"
+        [style.borderBottom]="isTile ? '4px solid blue': '4px solid white'">Плитка</button>
+      <button class='itemTable' (click)="changeCurrentChoice($event)"
+        [style.borderBottom]="!isTile ? '4px solid blue': '4px solid white'">Таблица</button>
+    </div>
+
+
+    <div class='wrapperContent'>
+
+
+      <div class='contentTile' *ngIf="isTile; else table">
+        <app-tile (onChangeLike)="onChangeLike(item.id)" *ngFor="let item of cats" [cat]="item">
+        </app-tile>
+      </div>
+
+
+
+      <ng-template #table>
+        <div class='contentTable'>
+          <app-table (onChangeLike)="onChangeLike(item.id)" *ngFor="let item of cats" [cat]="item"></app-table>
+        </div>
+      </ng-template>
+
+
+
+    </div>
+  </main>
+  <footer>© Expert Sender</footer>
+</div>
+
+<!-- <router-outlet></router-outlet> -->

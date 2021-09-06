@@ -1,0 +1,10 @@
+
+
+<div class='tileCat' id={{cat.id}}>
+  <img src={{cat.image}} alt={{cat.name}}>
+  <div class='infoCat'>
+    <div>{{cat.name}}</div>
+    <img class='iconLike' (click)="changeLike(cat.id)" [src]="!cat.liked ? 'http://html.ftpes.ru/FrontEndTest/favorite_border.svg'
+    :'http://html.ftpes.ru/FrontEndTest/favorite_full.svg'">
+  </div>
+</div>
