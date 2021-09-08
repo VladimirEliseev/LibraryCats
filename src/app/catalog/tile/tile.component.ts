@@ -1,15 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Cats } from '../app.component'
+import {Cat} from '../catalog.service';
+import { CatalogService } from '../catalog.service';
 @Component({
   selector: 'app-tile',
   templateUrl: './tile.component.html',
   styleUrls: ['./tile.component.scss']
 })
 export class TileComponent {
-  @Input() cat: Cats;
-  @Output() onChangeLike = new EventEmitter<Number>();
-
-  changeLike(id: number): void {
-    this.onChangeLike.emit(id);
+  cats: Array<Cat>;
+  constructor(public catalogService: CatalogService) {
+    this.cats = this.catalogService.list();
   }
 }

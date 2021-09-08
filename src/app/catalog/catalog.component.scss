@@ -1,0 +1,26 @@
+.main__switch{
+  display: flex;
+  align-self: center;
+  padding: 20px 0;
+  color:rgb(35, 36, 37);
+  text-transform: uppercase;
+  width: 220px;
+  justify-items: center;
+  justify-content: space-between;
+}
+.main__switch_tile, .main__switch_table{
+  cursor: pointer;
+  background-color: #fff;
+  border: 0;
+  font-size: 20px;
+}
+.main__switch_tile:hover, .main__switch_table:hover{
+  color: blue;
+}
+.main__switch_checked{
+  border-bottom: 4px solid blue;
+}
+a{
+  text-decoration: none;
+  color:black;
+}
