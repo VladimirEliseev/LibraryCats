@@ -1,5 +1,4 @@
 import { Injectable} from "@angular/core";
-import { Router } from "@angular/router"
 export interface Cat {
   id: number,
   image: string,
@@ -9,8 +8,7 @@ export interface Cat {
 }
 @Injectable()
 export class CatalogService {
-  constructor(private router: Router){
-    this.router.url==='/table' ? this.isTile=false: this.isTile=true;
+  constructor(){
   }
   private cats: Array<Cat> = [
     { id: 1, image: 'http://html.ftpes.ru/FrontEndTest/Shironeko.jpg', name: 'Shironeko', description: 'Самый счастливый и сонный кот в мире', liked: false },
@@ -38,15 +36,5 @@ export class CatalogService {
         array[i].liked = !array[i].liked;
       }
     })
-  }
-  choice():boolean{
-    return  this.isTile;
-  }
-changeChoice(choice: string): void{
-    if(choice==='table'){
-      this.isTile=false;
-    }else{
-      this.isTile=true;   
-    }
   }
 }

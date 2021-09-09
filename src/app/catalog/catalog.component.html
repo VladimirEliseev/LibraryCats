@@ -1,11 +1,17 @@
-<div class='main__switch'>
-  <div>
-    <a [routerLink]="['/tile']" (click)="catalogService.changeChoice('tile')" class='main__switch_tile'
-      [class.main__switch_checked]='catalogService.isTile'>Плитка</a>
+<div class='wrapper'>
+  <div></div>
+  <div class='main__switch'>
+    <div>
+      <a [routerLink]="['/tile']" class='main__switch_tile' routerLinkActive="main__switch_checked">Плитка</a>
+    </div>
+    <div>
+      <a [routerLink]="['/table']" routerLinkActive="main__switch_checked" class='main__switch_table'>Tаблица</a>
+    </div>
   </div>
-  <div>
-    <a [routerLink]="['/table']" (click)="catalogService.changeChoice('table')" class='main__switch_table'
-      [class.main__switch_checked]='!catalogService.isTile'>Tаблица</a>
+  <div class='add'>
+    <button class='add__btn'  >
+     <a [routerLink]="['/add']">Добавить</a>
+    </button>
   </div>
 </div>
 <div class='content'>

@@ -7,7 +7,7 @@
   margin-bottom: 30px;
 
 }
-.info__tile{
+.tile__info{
   display: flex;
   justify-content: space-between;
   height: 50px;
@@ -16,15 +16,25 @@
   color: white;
   padding: 0 15px;
 }
-
-.content{
-  display: flex;
-  justify-content: center;
+.tile__info>div:nth-child(1){
+  flex-basis: 30%;
 }
-.content__tile{
+
+.wrapper{
   display: flex;
   flex-basis: 80%;
   justify-content: center;
   flex-wrap: wrap;
 }
-
+.icon__edit{
+  height: 30px;
+  cursor: pointer;
+}
+.icon__like{
+  cursor: pointer;
+}
+.wrapper__edit{
+  flex-basis: 50%;
+  display: flex;
+  justify-content: end;
+}

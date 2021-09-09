@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component} from '@angular/core';
 import {Cat} from '../catalog.service';
 import { CatalogService } from '../catalog.service';
 @Component({
@@ -8,7 +8,7 @@ import { CatalogService } from '../catalog.service';
 })
 export class TileComponent {
   cats: Array<Cat>;
-  constructor(public catalogService: CatalogService) {
+  constructor(public catalogService: CatalogService){
     this.cats = this.catalogService.list();
   }
 }

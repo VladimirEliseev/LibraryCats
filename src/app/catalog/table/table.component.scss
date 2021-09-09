@@ -1,13 +1,13 @@
-.cell__table{
+.cell{
   display: flex;
   justify-content: space-between;
   background-color: rgb(148, 144, 144);
   height: 150px;
-  flex-basis: 80%;
+  flex-basis: 85%;
   margin-bottom: 30px;
 
 }
-.cell__table_info{
+.cell__info{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -16,26 +16,31 @@
   padding-top: 10px;
   padding-left: 20px;
 }
-.cell__table_info>div:nth-child(1){
+.cell__info>div:nth-child(1){
   text-transform: uppercase;
   font-size: 22px;
   margin-bottom: 10px;
 }
-.cell__table_info>div:nth-child(2){
+.cell__info>div:nth-child(2){
   font-size: 18px;
 }
-.icon__like{
+.icon__like, .icon__edit{
   align-self: center;
   margin-right: 20px;
   fill: white;
   height: 40px;
+  cursor: pointer;
+}
+.icon__edit{
+  height: 35px;
 }
 
 .content{
   display: flex;
   justify-content: center;
 }
-.content__table{
+
+.wrapper{
   display: flex;
   flex-basis: 80%;
   justify-content: center;
