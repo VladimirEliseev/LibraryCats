@@ -1,4 +1,4 @@
-import { Injectable} from "@angular/core";
+import { Injectable } from "@angular/core";
 export interface Cat {
   id: number,
   image: string,
@@ -8,7 +8,7 @@ export interface Cat {
 }
 @Injectable()
 export class CatalogService {
-  constructor(){
+  constructor() {
   }
   private cats: Array<Cat> = [
     { id: 1, image: 'http://html.ftpes.ru/FrontEndTest/Shironeko.jpg', name: 'Shironeko', description: 'Самый счастливый и сонный кот в мире', liked: false },
@@ -24,17 +24,30 @@ export class CatalogService {
     { id: 11, image: 'http://html.ftpes.ru/FrontEndTest/Nala.jpg', name: 'Nala', description: 'Кошка, которая всегда в шоке', liked: false },
     { id: 12, image: 'http://html.ftpes.ru/FrontEndTest/Colonel_Meow.jpg', name: 'Colonel Meow', description: 'Кот с самой длинной шерстью', liked: false },
   ];
-  isTile:boolean=true;
+  isTile: boolean = true;
 
-  list():Array<Cat> {
+  list(): Array<Cat> {
     return this.cats;
   }
 
-  liked(id:number):void {
+  liked(id: number): void {
     this.cats.forEach((item, i, array) => {
       if (id == item.id) {
         array[i].liked = !array[i].liked;
       }
     })
+  }
+
+  add(cat: Cat) {
+    this.cats.push({ ...cat, id: this.cats[this.cats.length - 1].id + 1, liked: false });
+  }
+
+  edit({ name, description, image }: { name: string, description: string, image: string }, id: number) {
+    this.cats[id] = {
+      ...this.cats[id],
+      name,
+      description,
+      image
+    };
   }
 }

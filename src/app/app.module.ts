@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule} from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CatalogModule } from './catalog/catalog.module';
@@ -17,7 +18,8 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    CatalogModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   exports: [RouterModule],

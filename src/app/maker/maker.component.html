@@ -1,1 +1,21 @@
-<p>maker works!</p>
+<div class='wrapper'>
+  <h1>{{title}}</h1>
+  <form class='form' [formGroup]="form" (ngSubmit)='submit()'>
+    <div class='form__group'>
+      <label for="input_name">Имя</label>
+      <input type="text" id='input__name' class='form__input_name' formControlName="name">
+      <small *ngIf="form.controls['name'].invalid && form.controls['name'].touched">Введите имя</small>
+    </div>
+    <div class='form__group'>
+      <label for="input__description">Описание</label>
+      <input type="text" id='input__description' class='form__input_description' formControlName="description">
+        <small *ngIf="form.controls['description'].invalid && form.controls['description'].touched" >Описание не может быть короче 5 символов</small>
+      </div>
+    <div class='form__group'>
+      <label for="input_image">Ссылка на картинку</label>
+      <input type="url" id='input__image' class='form__input_image' formControlName="image">
+      <small *ngIf="form.controls['image'].invalid && form.controls['image'].touched">Добавьте ссылку на картинку</small>
+    </div>
+    <button type="submit" class='form__btn_submit'>Сохранить</button>
+  </form>
+</div>
