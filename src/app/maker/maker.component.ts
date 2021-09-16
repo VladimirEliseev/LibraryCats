@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Cat, CatalogService } from '../catalog/catalog.service';
 import { ActivatedRoute } from '@angular/router';
+import { CatQuery } from '../store/cat.query';
+import { CatService } from '../store/cat.service';
+import { Cat } from '../store/cat.store';
 
 @Component({
   selector: 'app-maker',
@@ -11,13 +13,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MakerComponent implements OnInit {
   title: string;
-  form: FormGroup;
+  form: FormGroup;  
   cats: Array<Cat>;
-  changeId: number;
+  changeId: number=0;
 
 
-  constructor(private router: Router, private activateRoute: ActivatedRoute, public catalogService: CatalogService, private fb: FormBuilder) {
-    this.cats = this.catalogService.list();
+  constructor(private router: Router, private activateRoute: ActivatedRoute,private catQuery: CatQuery, private catService: CatService,private fb: FormBuilder) {
+    this.cats = this.catQuery.getAll();
   }
   ngOnInit() {
 
@@ -36,16 +38,18 @@ export class MakerComponent implements OnInit {
       this.form.patchValue({
         name: this.cats[this.changeId].name,
         description: this.cats[this.changeId].description,
-        image: this.cats[this.changeId].image
+        image: this.cats[this.changeId].image,
+        liked: this.cats[this.changeId].liked
       })
     }
 
   }
   submit() {
     if (this.changeId) {
-      this.catalogService.edit(this.form.value, this.changeId)
+      let id=this.changeId+1;
+      this.catService.edit({...this.form.value, id})
     } else {
-      this.catalogService.add({ ...this.form.value });
+      this.catService.add({ ...this.form.value });
     }
     this.router.navigate(['/tile']);
   }

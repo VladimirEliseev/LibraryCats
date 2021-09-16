@@ -1,12 +1,12 @@
 <div class='wrapper'>
-  <div class='tile' [attr.id]="item.id" *ngFor="let item of cats">
+  <div class='tile' [attr.id]="item.id" *ngFor="let item of cats$ | async">
     <img [attr.src]="item.image" [attr.alt]="item.name">
     <div class='tile__info'>
       <div>{{item.name}}</div>
       <div class=wrapper__edit>
         <img  class='icon__edit' src="assets/edit.svg" [routerLink]="['/edit', item.id]" alt="edit">
       </div>
-      <img class='icon__like' (click)="catalogService.liked(item.id)" [src]="item.liked ? 'assets/like.svg'
+      <img class='icon__like' (click)="liked(item)" [src]="item.liked ? 'assets/like.svg'
         :'assets/unlike.svg'">
     </div>
   </div>

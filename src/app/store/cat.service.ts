@@ -1,19 +1,13 @@
 import { Injectable } from "@angular/core";
-export interface Cat {
-  id: number,
-  image: string,
-  name: string,
-  description: string,
-  liked: boolean
-}
-@Injectable()
-export class CatalogService {
-  constructor() {
-  }
+import { Cat, CatStore } from "./cat.store";
+
+@Injectable({ providedIn: 'root' })
+export class CatService {
+  id: number = 1;
   private cats: Array<Cat> = [
     { id: 1, image: 'http://html.ftpes.ru/FrontEndTest/Shironeko.jpg', name: 'Shironeko', description: 'Самый счастливый и сонный кот в мире', liked: false },
     { id: 2, image: 'http://html.ftpes.ru/FrontEndTest/Garfi.jpg', name: 'Garfi', description: 'Самый злой кот в мире', liked: false },
-    { id: 3, image: 'http://html.ftpes.ru/FrontEndTest/Sam.jpg', name: 'Shironeko', description: 'У кота Сэма есть потрясающие брови', liked: false },
+    { id: 3, image: 'http://html.ftpes.ru/FrontEndTest/Sam.jpg', name: 'Sam', description: 'У кота Сэма есть потрясающие брови', liked: false },
     { id: 4, image: 'http://html.ftpes.ru/FrontEndTest/Snoopy.jpg', name: 'Snoopy', description: 'Самый очаровательный котик', liked: false },
     { id: 5, image: 'http://html.ftpes.ru/FrontEndTest/Venus.jpg', name: 'Venus', description: 'Кошка с двумя лицами', liked: false },
     { id: 6, image: 'http://html.ftpes.ru/FrontEndTest/Maru.jpg', name: 'Maru', description: 'Повелитель коробок', liked: false },
@@ -24,30 +18,19 @@ export class CatalogService {
     { id: 11, image: 'http://html.ftpes.ru/FrontEndTest/Nala.jpg', name: 'Nala', description: 'Кошка, которая всегда в шоке', liked: false },
     { id: 12, image: 'http://html.ftpes.ru/FrontEndTest/Colonel_Meow.jpg', name: 'Colonel Meow', description: 'Кот с самой длинной шерстью', liked: false },
   ];
-  isTile: boolean = true;
-
-  list(): Array<Cat> {
-    return this.cats;
-  }
-
-  liked(id: number): void {
-    this.cats.forEach((item, i, array) => {
-      if (id == item.id) {
-        array[i].liked = !array[i].liked;
-      }
+  constructor(private catStore: CatStore) {
+    this.cats.forEach(cat => {
+      this.catStore.add(cat);
+      this.id++;
     })
-  }
+  };
 
   add(cat: Cat) {
-    this.cats.push({ ...cat, id: this.cats[this.cats.length - 1].id + 1, liked: false });
+    this.catStore.add({ ...cat, id: this.id, liked: false });
+    this.id++;
   }
 
-  edit({ name, description, image }: { name: string, description: string, image: string }, id: number) {
-    this.cats[id] = {
-      ...this.cats[id],
-      name,
-      description,
-      image
-    };
+  edit(cat: Cat) {
+    this.catStore.update(cat.id.toString(), { ...cat })
   }
 }

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CatalogComponent } from './catalog.component';
 import { RouterModule } from '@angular/router'
 import { CommonModule } from '@angular/common';
-import { CatalogService } from './catalog.service';
 import { MakerModule } from '../maker/maker.module';
 @NgModule({
   declarations: [
@@ -20,7 +19,7 @@ import { MakerModule } from '../maker/maker.module';
   exports: [
     RouterModule
   ],
-  providers: [CatalogService],
+  providers: [],
   bootstrap: [CatalogComponent]
 })
 export class CatalogModule {
